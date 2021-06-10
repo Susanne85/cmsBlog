@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Susanne85/cmsblog/issues"
   },
-  "homepage": "https://github.com/Susanne85/cmsblog#readme"
+  "homepage": "https://github.com/Susanne85/cmsblog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  }
 }

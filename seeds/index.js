@@ -1,4 +1,4 @@
-//require('dotenv').config();
+require('dotenv').config();
 const seedBlog = require('./blogData');
 const seedComment = require('./commentData');
 //const Sequelize = require('sequelize');
