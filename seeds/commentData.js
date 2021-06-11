@@ -8,6 +8,12 @@ const commentData = [
     blog_id: 1
   },
   {
+    post_comment: 'Fantasic',
+    post_user: 'fredd@home',
+    post_date: 'March 30, 2018',
+    blog_id: 1
+  },
+  {
     post_comment: 'Absolutely so True',
     post_user: 'arthur@home',
     post_date: 'March 30, 2018',

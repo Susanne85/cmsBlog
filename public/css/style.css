@@ -71,7 +71,7 @@ nav a:hover {
   background-color: #fff;
   padding: 50px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
 }
@@ -114,6 +114,14 @@ img {
   background-color: var(--light);
   color: var(--dark);
 }
+.blog {
+  margin: 20px;
+  flex: 0 1 100px;
+  border: 7px double var(--dark);
+  border-radius: 10px;
+  background-color: var(--light);
+  color: var(--dark);
+}
 
 .login-card {
   margin: 0 0 20px 0;
@@ -144,16 +152,6 @@ img {
   font-weight: bold;
 }
 
-.gallery-name {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 5px var(--secondary);
-  border: 10px groove var(--light);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
-}
 
 /* LAYOUT */
 .container {

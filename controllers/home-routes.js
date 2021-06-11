@@ -1,74 +1,43 @@
 const router = require('express').Router();
-const { Blog, Comment} = require('../models');
+const { Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-// GET all galleries for homepage
 router.get('/', withAuth, async (req, res) => {
   try {
     // attributes: ['blog_id', 'post_content'],
     const dbBlogData = await Blog.findAll({
-      include: [
-        {
-          model: Comment,
-       },
-     ],
     });
-    
+
     const blogs = dbBlogData.map((blogData) =>
       blogData.get({ plain: true })
     );
-    console.log ('here', blogs);
- //   res.render('homepage', {
- //     galleries,
-  //    loggedIn: req.session.loggedIn,
- //  });
+    console.log('date is ', blogs );
+    res.render('homepage', {
+      blogs,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one gallery
-// TODO: Replace the logic below with the custom middleware
-router.get('/gallery/:id', withAuth, async (req, res) => {
+router.get('/comment/:id', withAuth, async (req, res) => {
   // Checking whether the user is logged in and resulting navigation is done within withAuth
-//  try {
- //   const dbGalleryData = await Gallery.findByPk(req.params.id, {
- //     include: [
- //       {
- //         model: Painting,
- //         attributes: [
-  //          'id',
-   //         'title',
-  //          'artist',
-  //          'exhibition_date',
-  //          'filename',
-  //          'description',
-   //       ],
-  //      },
-  //    ],
- //   });
-//    const gallery = dbGalleryData.get({ plain: true });
- //   res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
- // } catch (err) {
- //   console.log(err);
-  //  res.status(500).json(err);
-  //}
+  try {
+    const dbBlogData = await Blog.findByPk(req.params.id, {
+      include: [
+        Comment,
+      ],
+    });
+    const blog = dbBlogData.get({ plain: true });
+    console.log ('in get for a particular blog', blog);
+    res.render('comment', { blog,  loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-// GET one painting
-// TODO: Replace the logic below with the custom middleware
-router.get('/painting/:id', withAuth, async (req, res) => {
-//  try {
-//    const dbPaintingData = await Painting.findByPk(req.params.id);
-
-//    const painting = dbPaintingData.get({ plain: true });
-
-//    res.render('painting', { painting, loggedIn: req.session.loggedIn });
- // } catch (err) {
-//    console.log(err);
-//    res.status(500).json(err);
-//  }
-});
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
