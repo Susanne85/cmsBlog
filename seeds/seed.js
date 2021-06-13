@@ -1,19 +1,13 @@
 require('dotenv').config();
 const seedBlog = require('./blogData');
 const seedComment = require('./commentData');
-
-const { User } = require('../models');
-const userData = require('./userData.json');
-
+const seedUser = require('./userData');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
-  
-  await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
+
+  await seedUser();
 
   await seedBlog();
   

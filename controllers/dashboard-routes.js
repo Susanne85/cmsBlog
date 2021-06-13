@@ -4,9 +4,8 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (request, response) => {
   try {
-    let findVar = 'sue@email.com';
     const dbBlogData = await Blog.findAll({
-        where: {creator: findVar}
+        where: {creator: request.session.user}
     });
 
     const blogs = dbBlogData.map((blogData) =>

@@ -19,7 +19,7 @@ const signupFormHandler = async (event) => {
           alert('User already exists, please click on login');
         }
       }catch (error) {
-        response.status(500).json(error);
+       response.status(500).json(error);
       }
     }else {
       alert('Enter email and password or click on login');
