@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Blog, Comment } = require('../models');
+const { Blog, Comment, User} = require('../models');
 const withAuth = require('../utils/auth');
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // attributes: ['blog_id', 'post_content'],
     const dbBlogData = await Blog.findAll({
@@ -48,4 +48,12 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
+});
 module.exports = router;
