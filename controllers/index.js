@@ -1,4 +1,5 @@
 const router = require('express').Router();
+console.log('Controller - Index');
 
 const apiRoutes = require('./api');
 const homeRoutes = require('./home-routes.js');

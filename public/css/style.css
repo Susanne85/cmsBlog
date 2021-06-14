@@ -91,6 +91,22 @@ nav a:hover {
   background-color: #aeaeae;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
+.page-title{
+  text-align: center;
+  background-color: var(--tertiary);
+}
+.btn-post {
+  display:flex;
+  text-align: center;
+  margin: auto;
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 2rem;
+}
 
 .btn-no-style {
   background: none;
