@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Blog, Comment, User } = require('../models');
-//const withAuth = require('../utils/auth');
+const { Blog, Comment } = require('../models');
 router.get('/', async (request, response) => {
   console.log('HomeRoutes /');
   try {
@@ -18,38 +17,25 @@ router.get('/', async (request, response) => {
     response.status(500).json(err);
   }
 });
-//router.get('/dashboard', async (request, response) => {
-//  try {
- //   if (request.session.loggedIn) {
- //     console.log('HomeRoutes /dashboard logged in', request.session.loggedIn + ' ' +request.session.user);
- //     const dbBlogData = await Blog.findAll({
- //       where: { creator: request.session.user }
-  //    });
- //     const blogs = dbBlogData.map((blogData) =>
- //     blogData.get({ plain: true }));
-      
-  //    response.render('dashboard', {
-  //      blogs,
-  //      loggedIn: request.session.loggedIn,
-  //    });
-  //  } else {
-  //    console.log('HomeRoutes /dashboard not logged in', request.session.loggedIn + ' ' +request.session.user);
-  //    const dbBlogData = await Blog.findAll({
-  //    });
+router.get('/dashboard', async (request, response) => {
+  try {
+    console.log('HomeRoutes /dashboard logged in', request.session.loggedIn + ' ' + request.session.user);
+    const dbBlogData = await Blog.findAll({
+      where: { creator: request.session.user }
+    });
 
-   //   const blogs = dbBlogData.map((blogData) =>
-   //   blogData.get({ plain: true }));
+    const blogs = dbBlogData.map((blogData) =>
+      blogData.get({ plain: true }));
 
-   //   response.render('dashboard', {
-    //    blogs,
-    //    loggedIn: request.session.loggedIn,
-   //   });
-  //  }
-  //  
-  //} catch (err) {
- //   response.status(500).json(err);
- // }
-//});
+    response.render('dashboard', {
+      blogs,
+      loggedIn: request.session.loggedIn,
+    });
+
+  } catch (err) {
+    response.status(500).json(err);
+  }
+});
 router.get('/comment/:id', async (request, response) => {
   console.log('HomeRoutes /comment');
   try {
