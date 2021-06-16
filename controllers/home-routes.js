@@ -18,8 +18,8 @@ router.get('/', async (request, response) => {
   }
 });
 router.get('/dashboard', async (request, response) => {
+  console.log('HomeRoutes /dashboard', request.session.loggedIn);
   try {
-    console.log('HomeRoutes /dashboard logged in', request.session.loggedIn + ' ' + request.session.user);
     const dbBlogData = await Blog.findAll({
       where: { creator: request.session.user }
     });
@@ -44,6 +44,7 @@ router.get('/comment/:id', async (request, response) => {
         Comment,
       ],
     });
+    
     const blog = dbBlogData.get({ plain: true });
 
     response.render('comment', {
@@ -56,6 +57,13 @@ router.get('/comment/:id', async (request, response) => {
   }
 });
 
+router.get('/newComment', async (request, response) => {
+  console.log('HomePage Routes /newComment');
+  response.render('new-comment', {
+    loggedIn: request.session.loggedIn,
+    user: request.session.user,
+  });
+});
 router.get('/login', (request, response) => {
   console.log('HomeRoutes /login');
   if (request.session.loggedIn) {

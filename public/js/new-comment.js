@@ -6,15 +6,14 @@ const newCommentFormHandler = async (event) => {
   const blog_id = sessionStorage.getItem("blogId");
   if (post_comment) {
     const post_date = new Date();
-    console.log('new comment', post_comment + ' ' + post_user + ' ' + blog_id);
-    const response = await fetch('/api/dashboard/newcomment', {
+    const response = await fetch('/api/comment/newcomment', {
       method: 'POST',
       body: JSON.stringify({ post_comment, post_user, post_date, blog_id }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert('Comment could not be added');
     }

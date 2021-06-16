@@ -1,15 +1,17 @@
 <section class="card">
-    <header>{{blog.title}}</header>
-    <h1>{{blog.content}}</h1>
-    <h2>Created by: {{blog.creator}} on {{format_date blog.date_created}}</h2>
-    
+    <header  >{{blog.title}}</header>
+    <h2>{{blog.content}}</h2>
+    <h3>Created by: {{blog.creator}} on {{format_date blog.date_created}}</h3>
 </section>
 
-<section class="flex-row justify-space-around m-2">
-    {{#each blog.comments as | comment|}}
-    <header>{{post_comment}} by {{post_user}}</header>
-    {{/each}}
+{{#each blog.comments as | comment|}}
+<section class="card">
+    <header></header>
+    <h1 class="flex-row justify-space-around m-2">{{post_comment}}</h1>
+    <h2 class="text-center" >by {{post_user}}</h2>
 </section>
+{{/each}}
+
 
 {{#if loggedIn}}
 <section>

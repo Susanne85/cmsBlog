@@ -4,4 +4,4 @@ const newPostHandler = async (event) => {
     document.location.replace('/dashboard/newPost');
 };
 
-document.querySelector('.newPost-form').addEventListener('submit', newPostHandler)
+document.querySelector('.newPost-form').addEventListener('click', newPostHandler)

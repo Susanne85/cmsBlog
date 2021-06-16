@@ -1,6 +1,12 @@
+{{#if loggedIn}}
 {{#each blogs as | blog|}}
-{{> blog-details}}
+{{> dashboard-details}}
 {{/each}}
+{{else}}
+{{#each blogs as | blog|}}
+{{> homepage-details}}
+{{/each}}
+{{/if}}
 
 {{#if loggedIn}}
 <section>

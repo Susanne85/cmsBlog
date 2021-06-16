@@ -7,7 +7,7 @@ const newPostFormHandler = async (event) => {
 
   if (title && content) {
     const date_created = new Date();
-    const response = await fetch('/api/dashboard/newblog', {
+    const response = await fetch('/api/blog/newblog', {
       method: 'POST',
       body: JSON.stringify({ title, content, creator, date_created }),
       headers: { 'Content-Type': 'application/json' },

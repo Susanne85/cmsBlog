@@ -33,6 +33,7 @@ header {
   text-align: center;
   background: var(--primary);
   color: var(--light);
+  font-size: 2rem;
 }
 
 main {
