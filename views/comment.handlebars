@@ -1,5 +1,5 @@
 <section class="card">
-    <header  >{{blog.title}}</header>
+    <header>{{blog.title}}</header>
     <h2>{{blog.content}}</h2>
     <h3>Created by: {{blog.creator}} on {{format_date blog.date_created}}</h3>
 </section>
@@ -8,17 +8,11 @@
 <section class="card">
     <header></header>
     <h1 class="flex-row justify-space-around m-2">{{post_comment}}</h1>
-    <h2 class="text-center" >by {{post_user}}</h2>
+    <h2 class="text-center">by {{post_user}}</h2>
 </section>
 {{/each}}
 
 
 {{#if loggedIn}}
-<section>
-    <form class="form newComment-form">
-        <button class="btn btn-post" type="submit">New Comment</button>
-        <input type="hidden" name="blog_id" id="blog_id" value={{blog.id}}>
-    </form>
-    <script src="../js/comment.js"></script>
-</section>
+<button class="btn btn-post"><a href="/newComment/?blogId={{blog.id}}">New Comment</a></button>
 {{/if}}

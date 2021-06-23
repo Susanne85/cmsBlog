@@ -1,18 +1,16 @@
 const router = require('express').Router();
 const { Blog } = require('../../models');
 router.post('/newblog', async (request, response) => {
-  console.log('Dashboard Routes new blog');
+  console.log('Dashboard Routes new blog', request.session.user);
   try {
     const dbBlogData = await Blog.create({
       title: request.body.title,
       content: request.body.content,
-      creator: request.body.creator,
+      creator: request.session.user,
       date_created: request.body.date_created,
     });
 
     request.session.save(() => {
-      request.session.loggedIn = true;
-      request.session.user = request.session.user;
       response.status(200).json(dbBlogData);
     });
   } catch (error) {
@@ -20,18 +18,16 @@ router.post('/newblog', async (request, response) => {
   }
 });
 router.put('/updateblog/:id', async (request, response) => {
-  console.log('Dashboard Routes new blog');
+  console.log('Dashboard Routes update blog', request.session.user);
   try {
     const dbBlogData = await Blog.update({
       title: request.body.title,
       content: request.body.content,
-      creator: request.body.creator,
+      creator: request.session.user,
       date_created: request.body.date_created,
     }, { where: { id: request.params.id } });
 
     request.session.save(() => {
-      request.session.loggedIn = true;
-      request.session.user = request.session.user;
       response.status(200).json(dbBlogData);
     });
   } catch (error) {

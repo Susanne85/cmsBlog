@@ -2,13 +2,13 @@ const newCommentFormHandler = async (event) => {
   event.preventDefault();
   console.log('New-Comment JS');
   const post_comment = document.querySelector('#new-comment').value.trim();
-  const post_user = document.querySelector('#user').value.trim();
-  const blog_id = sessionStorage.getItem("blogId");
+  const blog_id = document.querySelector('#blog-id').value.trim();
+  
   if (post_comment) {
     const post_date = new Date();
     const response = await fetch('/api/comment/newcomment', {
       method: 'POST',
-      body: JSON.stringify({ post_comment, post_user, post_date, blog_id }),
+      body: JSON.stringify({ post_comment, post_date, blog_id }),
       headers: { 'Content-Type': 'application/json' },
     });
 

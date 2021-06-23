@@ -1,16 +1,15 @@
 const updateFormHandler = async (event) => {
-  console.log('Update JS');
+  console.log('Update Blog JS');
   event.preventDefault();
   const title = document.getElementById('blog-title').value.trim();
   const content = document.getElementById('blog-content').value.trim();
-  const creator = document.querySelector('#user').value.trim();
   const id = document.querySelector('#blog_id').value.trim(); 
 
   if (title && content) {
     const date_created = new Date();
     const response = await fetch(`/api/blog/updateblog/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ title, content, creator, date_created }),
+      body: JSON.stringify({ title, content, date_created }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -24,7 +23,7 @@ const updateFormHandler = async (event) => {
   }
 };
 const deleteFormHandler = async (event) => {
-  console.log('Delete JS');
+  console.log('Delete Blog JS');
   event.preventDefault();
   const id = document.querySelector('#blog_id').value.trim(); 
 

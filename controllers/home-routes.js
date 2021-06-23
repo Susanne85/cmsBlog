@@ -50,7 +50,6 @@ router.get('/comment/:id', async (request, response) => {
     response.render('comment', {
       blog,
       loggedIn: request.session.loggedIn,
-      user: request.session.user
     });
   } catch (err) {
     response.status(500).json(err);
@@ -59,11 +58,12 @@ router.get('/comment/:id', async (request, response) => {
 
 router.get('/newComment', async (request, response) => {
   console.log('HomePage Routes /newComment');
+  blogId = request.query.blogId;
   response.render('new-comment', {
-    loggedIn: request.session.loggedIn,
-    user: request.session.user,
+    blogId,
   });
 });
+
 router.get('/login', (request, response) => {
   console.log('HomeRoutes /login');
   if (request.session.loggedIn) {

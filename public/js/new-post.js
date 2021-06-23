@@ -3,13 +3,12 @@ const newPostFormHandler = async (event) => {
   event.preventDefault();
   const title = document.querySelector('#blog-title').value.trim();
   const content = document.querySelector('#blog-content').value.trim();
-  const creator = document.querySelector('#user').value.trim();
 
   if (title && content) {
     const date_created = new Date();
     const response = await fetch('/api/blog/newblog', {
       method: 'POST',
-      body: JSON.stringify({ title, content, creator, date_created }),
+      body: JSON.stringify({ title, content, date_created }),
       headers: { 'Content-Type': 'application/json' },
     });
 

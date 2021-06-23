@@ -2,17 +2,11 @@
 {{#each blogs as | blog|}}
 {{> dashboard-details}}
 {{/each}}
+<section>
+   <button class="btn btn-post"><a href="/dashboard/newPost">New Post</a></button>
+</section>
 {{else}}
 {{#each blogs as | blog|}}
 {{> homepage-details}}
 {{/each}}
-{{/if}}
-
-{{#if loggedIn}}
-<section>
-   <form class="form newPost-form m-2">
-      <button class="btn btn-post" type="submit">New Post</button>
-   </form>
-   <script src="./js/dashboard.js"></script>
-</section>
 {{/if}}
