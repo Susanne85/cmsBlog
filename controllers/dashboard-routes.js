@@ -8,17 +8,15 @@ router.get('/newPost', async (request, response) => {
   })
 });
 router.get('/update-details/:id', async (request, response) => {
-  console.log('Dashboardboard Routes / update ', request.params.id);
+  console.log('Dashboardboard Routes /update-details', request.params.id);
   try {
     const dbBlogData = await Blog.findByPk(request.params.id);
     const blog = dbBlogData.get({ plain: true });
     response.render('update-details', {
-      blog,
-      user: request.session.user
+      blog, 
     });
   } catch (err) {
     response.status(500).json(err);
   }
 });
-
 module.exports = router;

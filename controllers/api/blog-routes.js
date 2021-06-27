@@ -18,7 +18,7 @@ router.post('/newblog', async (request, response) => {
   }
 });
 router.put('/updateblog/:id', async (request, response) => {
-  console.log('Dashboard Routes update blog', request.session.user);
+  console.log('Dashboard Routes update blog', request.params.id);
   try {
     const dbBlogData = await Blog.update({
       title: request.body.title,
@@ -36,8 +36,7 @@ router.put('/updateblog/:id', async (request, response) => {
 });
 
 router.delete('/delete/:id', async (request, response) => {
-  console.log('Dashboard Routes delete blog');
-
+  console.log('Dashboard Routes delete blog', request.params.id);
   try {
     const blogData = await Blog.destroy({
       where: {

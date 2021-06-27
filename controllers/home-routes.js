@@ -56,9 +56,9 @@ router.get('/comment/:id', async (request, response) => {
   }
 });
 
-router.get('/newComment', async (request, response) => {
-  console.log('HomePage Routes /newComment');
-  blogId = request.query.blogId;
+router.get('/newComment/:id', async (request, response) => {
+  console.log('HomePage Routes /newComment ' , request.params.id);
+  blogId = request.params.id;
   response.render('new-comment', {
     blogId,
   });
